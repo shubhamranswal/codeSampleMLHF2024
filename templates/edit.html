@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task</title>
+</head>
+<body>
+    <h1>Edit Task</h1>
+    <form id="taskForm">
+        <input type="hidden" name="taskId" id="taskId">
+        <div>
+            <label for="taskName">Task Name:</label>
+            <input type="text" id="taskName" name="taskName" required>
+        </div>
+        <button type="submit">Save Task</button>
+    </form>
+
+    <script>
+        // Example JavaScript for handling the form
+        document.addEventListener('DOMContentLoaded', function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const taskId = urlParams.get('id');
+            if (taskId) {
+                // Load task details for editing
+                document.getElementById('taskId').value = taskId;
+                document.getElementById('taskName').value = "Task " + taskId; // Example loading logic
+            }
+
+            document.getElementById('taskForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Logic to save the task
+                alert('Task saved!');
+            });
+        });
+    </script>
+</body>
+</html>
