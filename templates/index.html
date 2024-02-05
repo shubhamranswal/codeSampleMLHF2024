@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+</head>
+<body>
+    <h1>Task Manager</h1>
+    <a href="edit.html">Add New Task</a>
+    <ul id="taskList">
+        <!-- Task items will be dynamically inserted here -->
+    </ul>
+
+    <script>
+        // Example JavaScript for loading tasks dynamically
+        document.addEventListener('DOMContentLoaded', function() {
+            const tasks = [{ id: 1, name: "Task 1" }, { id: 2, name: "Task 2" }]; // Example tasks
+            const listElement = document.getElementById('taskList');
+            tasks.forEach(task => {
+                const item = document.createElement('li');
+                item.textContent = task.name + ' ';
+                const editLink = document.createElement('a');
+                editLink.href = `edit.html?id=${task.id}`;
+                editLink.textContent = 'Edit';
+                item.appendChild(editLink);
+                listElement.appendChild(item);
+            });
+        });
+    </script>
+</body>
+</html>
